@@ -12,18 +12,21 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@JsonDeserialize(builder = Lanche.Builder.class)
+@JsonDeserialize(builder = Lanche.LancheBuilder.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @With
 public class Lanche {
 
-
     private List<Ingrediente> ingredientes;
 
+    private double valorLanche;
 
-    public double getValorLanche() { return ingredientes.stream().mapToDouble(Ingrediente::getValor).sum(); }
+    public double getValorLanche() {
+        valorLanche = ingredientes.stream().mapToDouble(Ingrediente::getValor).sum();
+        return valorLanche;
+    }
 
     @JsonPOJOBuilder(withPrefix = "")
-    public static class Builder {}
+    public static class LancheBuilder {}
 
 }
