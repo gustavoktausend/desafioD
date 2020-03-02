@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -64,32 +65,30 @@ public class LancheService {
 
     }
 
-    public Map<String, Lanche> getListFromCardapio() {
+    public List<Lanche> getListFromCardapio() {
 
-            Map<String,Lanche> cardapio = new HashMap<>();
-
-            cardapio.put("X-Bacon", Lanche.builder()
-                    .ingredientes(
+            return Arrays.asList(
+                    Lanche.builder()
+                        .nomeLanche("X-Bacon")
+                        .ingredientes(
                             Arrays.asList(Ingrediente.BACON,Ingrediente.HAMBURGUER_CARNE,Ingrediente.QUEIJO)
-                    ).build());
-
-            cardapio.put("X-Burger", Lanche.builder()
-                    .ingredientes(
+                        ).build(),
+                    Lanche.builder()
+                        .nomeLanche("X-Burger")
+                        .ingredientes(
                             Arrays.asList(Ingrediente.HAMBURGUER_CARNE, Ingrediente.QUEIJO)
-                    ).build());
-
-            cardapio.put("X-Egg", Lanche.builder()
-                    .ingredientes(
+                        ).build(),
+                    Lanche.builder()
+                        .nomeLanche("X-Egg")
+                        .ingredientes(
                             Arrays.asList(Ingrediente.OVO, Ingrediente.HAMBURGUER_CARNE, Ingrediente.QUEIJO)
-                    ).build());
-
-            cardapio.put("X-Egg Bacon", Lanche.builder()
-                    .ingredientes(
+                        ).build(),
+                    Lanche.builder()
+                        .nomeLanche("X-Egg Bacon")
+                        .ingredientes(
                             Arrays.asList(Ingrediente.OVO, Ingrediente.HAMBURGUER_CARNE, Ingrediente.QUEIJO, Ingrediente.BACON)
-                    ).build());
-
-            return cardapio;
-
+                        ).build()
+                    );
 
     }
 

@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 
 @Validated
 @RestController
@@ -21,10 +21,15 @@ public class LancheController {
 
 
     @GetMapping
-    public Map<String, Lanche> getCardapio() {
+    public List<Lanche> getCardapio() {
 
         return lancheService.getListFromCardapio();
 
+    }
+
+    @GetMapping("/ingredientes")
+    public List<Ingrediente> getAllIngredientes() {
+        return Arrays.asList(Ingrediente.values());
     }
 
     @PostMapping

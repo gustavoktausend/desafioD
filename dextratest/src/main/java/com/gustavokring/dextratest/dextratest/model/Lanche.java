@@ -19,6 +19,8 @@ public class Lanche {
 
     private List<Ingrediente> ingredientes;
 
+    private String nomeLanche;
+
     private double valorLanche;
 
     public double getValorLanche() {
