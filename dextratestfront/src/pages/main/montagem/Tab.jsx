@@ -1,16 +1,17 @@
 import React, {useState, useLayoutEffect} from 'react';
-import { Row, Col, FormGroup, Card, CardBody } from 'reactstrap';
-import  Item  from './item';
+import { Row, Col, FormGroup, Card, CardBody, Button } from 'reactstrap';
 import { lancheApi } from '../../../api';
+
 
 export default () => {
     const [items, setItems] = useState([]);
+    const [reqItems, setReqItems] = useState([]);
 
     useLayoutEffect(() => {
         const fetchData = async() => {
             if (!Object.keys(items).length) {
                 try {
-                    const {data} = await lancheApi.get();
+                    const {data} = await lancheApi.getAllIngredientes();
                     setItems(data);
                 } catch (e) {
                     console.error(e);
@@ -26,12 +27,19 @@ export default () => {
                 <CardBody>
                     <Row>
                         <Col style={{display: 'flex'}}>
-                            <h3>Cardapio</h3>
+                            <h3>Montagem</h3>
                         </Col>
                     </Row>
                     <Row>
-                        {items.map(item => <Item key={item.nomeLanche} data={item} /> )}
+                        <Col>
+                            {items.map(item => {return <><br/> <Button color='secondary'> {item} </Button> <br/></> } )}
+                        </Col>
+                        <Col>
+
+                        </Col>
                     </Row>
+
+
                 </CardBody>
             </Card>
         </FormGroup>
